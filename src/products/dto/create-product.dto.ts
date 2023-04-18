@@ -17,7 +17,7 @@ export class CreateProductDto {
 
     @IsString()
     @IsOptional()
-    slug?: string[];
+    slug?: string;
 
     @IsInt()
     @IsPositive()
