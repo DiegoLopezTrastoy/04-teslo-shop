@@ -1,17 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { SeedService } from './seed.service';
-import { ProductsService } from 'src/products/products.service';
+import { Controller, Get, } from '@nestjs/common';
 
-@Controller('api/seed')
+import { ValidRoles } from '../auth/interfaces';
+import { Auth } from '../auth/decorators';
+
+import { SeedService } from './seed.service';
+
+@Controller('seed')
 export class SeedController {
-  constructor(
-    private readonly seedService: SeedService
-  ) {}
+  constructor(private readonly seedService: SeedService) {}
 
   @Get()
-  async executeSeed() {
-
-    return this.seedService.runSeed();
+  // @Auth( ValidRoles.admin )
+  executeSeed() {
+    return this.seedService.runSeed()
   }
-
 }
